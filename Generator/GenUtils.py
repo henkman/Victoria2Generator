@@ -1,12 +1,10 @@
 try:
-	import Image, colorsys, random, glob, os
+	from PIL import Image, ImageDraw
+	import colorsys, random, glob, os
 except:
-	print "Python PIL is not installed! \nGet it from http://www.pythonware.com/products/pil/\nCurrently, it is only available for 32-bit Python 2.5, 2.6 and 2.7. \nAborting."
-	raw_input("Press Enter to exit")
+	print("Python PIL is not installed! \nGet it from http://www.pythonware.com/products/pil/\nCurrently, it is only available for 32-bit Python 2.5, 2.6 and 2.7. \nAborting.")
+	input("Press Enter to exit")
 	exit()
-	
-from ImageDraw import Draw
-from PIL import Image
 
 def clamp(x, minimum,maximum):
     return max(minimum, min(x, maximum))
@@ -95,7 +93,7 @@ def GetColors():
 def CreateFlag(name, Color1, Color2, Color3, ModName):
 	Colors = [Color1, Color2, Color3]
 	im = Image.new("RGB", (93,64), Color1)
-	draw = Draw(im)
+	draw = ImageDraw.Draw(im)
 	
 	#define contrasting color
 	Contrast = (233,233,233)
@@ -277,6 +275,6 @@ def GetParameter(name):
 			if '.' in Content[1]:
 				return float(Content[1])
 			return int(Content[1])
-	print "Error: could not find property \""+name+" on Settings.ini. You probably mispelled it."
-	raw_input("Press Enter to exit.")
+	print("Error: could not find property \""+name+" on Settings.ini. You probably mispelled it.")
+	input("Press Enter to exit.")
 	raise NameError('ParamNotFound')

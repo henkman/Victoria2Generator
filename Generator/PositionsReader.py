@@ -2,7 +2,7 @@
 PositionsTXT = open("../map/positions.txt",'r').readlines()
 Out = open("Positions.txt",'w')
 
-print "Be patient..."
+print("Be patient...")
 
 import psyco
 psyco.full()
@@ -27,7 +27,7 @@ for nr in range(1,2703):
 							Data = PositionsTXT[i].strip(" \n\t").split('=')
 							PosY = Data[1]
 							Out.write(str(nr)+" "+PosX+" "+PosY+"\n")
-							#print nr,PosX,PosY
+							#print(nr,PosX,PosY)
 							break
 					#i=len(PositionsTXT)
 			except:

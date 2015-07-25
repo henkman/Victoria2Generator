@@ -2,7 +2,7 @@
 PositionsTXT = open("../map/positions.txt",'r').readlines()
 Out = open("Ports.txt",'w')
 
-print "Be patient..."
+print("Be patient...")
 
 for nr in range(1,2703):
 	i=0

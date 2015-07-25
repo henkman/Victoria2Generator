@@ -174,7 +174,7 @@ def GenerateFactionName(DictionaryName, CultureName):
 			for i in range(random.randint(ChanceMin,ChanceMax)):
 				Name += random.choice(Dictionary2)	
 		Name += random.choice(Dictionary3)	
-		Name = string.replace(Name, '\n','')
+		Name = Name.replace('\n','')
 	
 	#check if name is taken
 	for i in range(len(FactionNames)):
@@ -189,9 +189,9 @@ files = glob.glob("*.names1")
 os.chdir("../../")
 for f in files:
 	f = f.replace(".names1","")
-	print "\n----------------------------"
-	print f.upper()+":"
-	print "----------------------------"
+	print("\n----------------------------")
+	print(f.upper()+":")
+	print("----------------------------")
 	for i in range(30):
-		print GenerateName(f,1)+" "+GenerateName(f,0)
+		print(GenerateName(f,1)+" "+GenerateName(f,0))
 """

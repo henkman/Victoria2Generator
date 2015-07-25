@@ -24,13 +24,13 @@ except:
 	pass
 
 if not "Generator" in os.getcwd():
-	print "The Generator must be installed on the Generator subfolder!\nExample:"
-	print "C:\\Victoria 2\\Generator\\"
-	print "Note: it is case-sensitive (Victoria 2\\generator won't work)"
-	raw_input("Press Enter to exit.")
+	print("The Generator must be installed on the Generator subfolder!\nExample:")
+	print("C:\\Victoria 2\\Generator\\")
+	print("Note: it is case-sensitive (Victoria 2\\generator won't work)")
+	input("Press Enter to exit.")
 	sys.exit(1)
 	
-print "\nYou can customize some variables by editing the Settings.ini file.\n"
+print("\nYou can customize some variables by editing the Settings.ini file.\n")
 
 DEBUG_CULT_POS=0
 DEBUG_TEXT=0
@@ -339,7 +339,7 @@ class Province:
 		for p in Provs:
 			if not p in Provs2:
 				Provs2.append(p)
-		#print len(Provs2), len(Tested)
+		#print(len(Provs2), len(Tested))
 		return Provs2, Tested
 			
 				
@@ -465,7 +465,7 @@ def GetProvinceRegion(nr):
 	
 def ReadProvincesData():
 	global AllProvinces
-	print "  Reading adjacencies..."
+	print("  Reading adjacencies...")
 	i=0
 	for p in AllProvinces:
 		sys.stdout.write("%0.2f%%\b\b\b\b\b\b\b" % (float(i)/len(AllProvinces)*100.0))
@@ -476,7 +476,7 @@ def ReadProvincesData():
 				for j in range(1,len(Line)):
 					p.Neighbors.append(GetProvince(int(Line[j])))
 				break
-	print "  Reading positions..."
+	print("  Reading positions...")
 	i=0
 	for p in AllProvinces:
 		sys.stdout.write("%0.2f%%\b\b\b\b\b\b\b" % (float(i)/len(AllProvinces)*100.0))
@@ -554,7 +554,7 @@ def GenerateTag(Name):
 		for i in range(len(Tags)):
 			if Tags[i] == tag:
 				return GenerateTag(Name)
-	#print "Tag for " +Name+ ": " + tag
+	#print("Tag for " +Name+ ": " + tag)
 	Tags.append(tag)
 	return tag
 
@@ -1078,7 +1078,7 @@ def Startup():
 	ModFolder = ModName.replace(' ','_')
 	os.mkdir(ModFolder)
 	
-	print "Copying standard files..."
+	print("Copying standard files...")
 	os.chdir("../Generator")
 	
 	dir_util.copy_tree("standard", "../mod/"+ModFolder)
@@ -1304,7 +1304,7 @@ def CreateFactory(ThisProvince):
 #	for File in ProvinceFiles:
 #		FileNumber = File[File.find("/")+1:]
 #		FileNumber = File[:File.find("-")-1]
-#		print FileNumber
+#		print(FileNumber)
 #		FileNumber = int(FileNumber)
 #		if FileNumber == ThisProvince.ProvinceNumber:
 #			ProvinceFile = open(File, "a+")
@@ -1317,7 +1317,7 @@ def CreateFactory(ThisProvince):
 	ProvinceFile.write("\nstate_building = {\n\tlevel = 1\n\tbuilding = ")
 	ProvinceFile.write(FacType)
 	ProvinceFile.write("\n\tupgrade = yes\n}\n")
-	#print "Created a "+FacType+" factory on "+str(ThisProvince.ProvinceNumber)
+	#print("Created a "+FacType+" factory on "+str(ThisProvince.ProvinceNumber))
 
 #######################################################
 
@@ -1391,7 +1391,7 @@ def CreatePops():
 						File.write("\n\tcraftsmen = {\n\t\tculture = "+ProvCulture+"\n\t\treligion = "+Rel+"\n\t\tsize = "+str(NrCraftsmen)+"\n\t}")
 						File.write("\n\tcapitalists = {\n\t\tculture = "+ProvCulture+"\n\t\treligion = "+Rel+"\n\t\tsize = "+str(int(PercentCapitalists*ProvincePopulation))+"\n\t}")
 				except:
-					print ThisProvince.ProvinceNumber
+					print(ThisProvince.ProvinceNumber)
 			File.write("\n\tofficers = {\n\t\tculture = "+ProvCulture+"\n\t\treligion = "+Rel+"\n\t\tsize = "+str(int(Officers()*ProvincePopulation))+"\n\t}\n")				
 		File.write("}\n")
 #######################################################
@@ -1460,7 +1460,7 @@ def PickUncolonizedCultures():
 		for s in ProvsSum:
 			if abs(s[1]-IdealUncolonizedProvinces) < ClosestNr:
 				ClosestNr = abs(s[1]-IdealUncolonizedProvinces)
-				#print s[1]
+				#print(s[1])
 				Closest = s[0]
 		#found the best culture group, update now
 		for c in Cultures:
@@ -1471,7 +1471,7 @@ def PickUncolonizedCultures():
 				
 #attempts to distribute cultures so they are in about the same area
 def DistributeCultures():
-	print "  Phase 1/2..."
+	print("  Phase 1/2...")
 	ProvsPerCulture = (len(AllProvinces)/len(Cultures))# - 1 #-1 to prevent rounding errors
 	j=0
 	for c in Cultures:
@@ -1493,12 +1493,12 @@ def DistributeCultures():
 						CulturesProvs.append(neighbor)
 						Given+=1
 				except:
-					print "The file map/region.txt seems to be corrupt. Please copy the map/region.txt file from another Vic2 installation into this one and try again."
-					raw_input("Press enter to exit.")
+					print("The file map/region.txt seems to be corrupt. Please copy the map/region.txt file from another Vic2 installation into this one and try again.")
+					input("Press enter to exit.")
 					return
 
 		j+=1
-	print "  Phase 2/2..."
+	print("  Phase 2/2...")
 	j=0
 	for p in AllProvinces:
 		sys.stdout.write("%0.2f%%\b\b\b\b\b\b\b" % (float(j)/len(AllProvinces)*100.0))
@@ -1528,7 +1528,7 @@ def DistributeCultures():
 #######################################################
 def RandomizeRegions():
 	global Regions
-	print "  Phase 1/2..."
+	print("  Phase 1/2...")
 	i=0
 	for p in AllProvinces:
 			sys.stdout.write("%0.2f%%\b\b\b\b\b\b\b" % (float(i)/len(AllProvinces)*100.0))
@@ -1565,7 +1565,7 @@ def RandomizeRegions():
 				ThisRegion = Region("RND_"+str(Provs[0].ProvinceNumber),Provs, LifeRating)
 				Regions.append(ThisRegion)
 				
-	print "  Phase 2/2..."
+	print("  Phase 2/2...")
 	#clean up 1-province regions
 	ChangedAny=1
 	while ChangedAny:
@@ -1721,7 +1721,7 @@ def DistributeProvinces(GPsOnly):
 				Factions[i].Name = NameGen.GenerateFactionName(Factions[i].Culture.CultureGroup, Factions[i].Culture.CultureName)
 				Factions[i].Tag = GenerateTag(GenUtils.remove_accents(Factions[i].Name))
 			#else:
-			#	print "    Warning: could not find an adequate capital for faction "+str(i)+" (Type: "+Factions[i].Type+"), this faction won't be created."
+			#	print("    Warning: could not find an adequate capital for faction "+str(i)+" (Type: "+Factions[i].Type+"), this faction won't be created.")
 
 def CreateUnreleasedFactions():
 	for i in range(len(UnreleasedFactions)):
@@ -1756,7 +1756,7 @@ def CreateUnificationFactions():
 		#get the best culture group
 		Grp = GetBestUnifiableCulture()
 		if Grp == 0:
-			print "    Warning: could not assign all Unifiable factions."
+			print("    Warning: could not assign all Unifiable factions.")
 			return
 		#create faction stub
 		ThisFaction = Faction()
@@ -1896,15 +1896,15 @@ def AssignAcceptedCultures():
 				if i != -1:
 					CultSum[i] += 1.0
 		MainCultureIndex = GetCultureIndex(f.Culture)
-		#print "Current culture: "+Cultures[MainCultureIndex].CultureName
+		#print("Current culture: "+Cultures[MainCultureIndex].CultureName)
 		if len(f.ProvincesOwned)>0:
 			for i in range(len(Cultures)):
 				if i != MainCultureIndex:
 					if Cultures[i].CultureGroup == Cultures[MainCultureIndex].CultureGroup and CultSum[i]/CultSum[MainCultureIndex] >= AcceptedCulturePresenceMinSameGrp/100.0:
 						f.AcceptedCultures.append(Cultures[i])
-						#print "Same grp, "+str(CultSum[i])+" / "+str(CultSum[MainCultureIndex])+" = "+str(CultSum[i]/CultSum[MainCultureIndex])+" - "+Cultures[i].CultureName
+						#print("Same grp, "+str(CultSum[i])+" / "+str(CultSum[MainCultureIndex])+" = "+str(CultSum[i]/CultSum[MainCultureIndex])+" - "+Cultures[i].CultureName)
 					elif CultSum[i]/CultSum[MainCultureIndex] >= AcceptedCulturePresenceMinOtherGrp/100.0:
-						#print "Other grp, "+str(CultSum[i])+" / "+str(CultSum[MainCultureIndex])+" = "+str(CultSum[i]/CultSum[MainCultureIndex])+" - "+Cultures[i].CultureName
+						#print("Other grp, "+str(CultSum[i])+" / "+str(CultSum[MainCultureIndex])+" = "+str(CultSum[i]/CultSum[MainCultureIndex])+" - "+Cultures[i].CultureName)
 						f.AcceptedCultures.append(Cultures[i])
 			
 #for each faction, run through its owned provinces. If p.culture != f.culture, then p receives a core from a neighbor where its neighbor.Cultures[0] == p.Cultures[0].
@@ -1913,7 +1913,7 @@ def CheckCores():
 	for f in Factions:
 		sys.stdout.write("%0.2f%%\b\b\b\b\b\b\b" % (float(i)/len(Factions)*100.0))
 		i+=1
-		#print "This culture is "+f.Culture.CultureName
+		#print("This culture is "+f.Culture.CultureName)
 		for p in f.ProvincesOwned:
 			ShouldChange=0
 			if DontAssignCoreIfAccepted and p.GetMajorCulture() != f.Culture and not p.GetMajorCulture() in f.AcceptedCultures:
@@ -1923,7 +1923,7 @@ def CheckCores():
 			if ShouldChange:
 				RightfulOwner = GetClosestFactionByCulture(p)
 				if RightfulOwner != 0:
-					#print "Adding core to province "+str(p.ProvinceNumber)+", old owner: "+f.Name+" new owner: "+RightfulOwner.Name, " culture: "+p.GetMajorCulture().CultureName+RightfulOwner.Culture.CultureName
+					#print("Adding core to province "+str(p.ProvinceNumber)+", old owner: "+f.Name+" new owner: "+RightfulOwner.Name, " culture: "+p.GetMajorCulture().CultureName+RightfulOwner.Culture.CultureName)
 					p.Cores.append(RightfulOwner)
 					if f in p.Cores:
 						if RemoveCoresIfSameGrp and p.GetMajorCulture().CultureGroup == f.Culture.CultureGroup:
@@ -1966,7 +1966,7 @@ def WriteSummary():
 			if Faction.Culture.Unifiable:
 				Unif="yes"
 		except:
-			print Faction.Name, Faction.Type
+			print(Faction.Name, Faction.Type)
 		Type = "Normal"
 		if Faction.Type != "":
 			Type = Faction.Type
@@ -1997,7 +1997,7 @@ def Main():
 	Startup()
 
 	#Create the cultures
-	print "Creating cultures..."
+	print("Creating cultures...")
 	#create culture groups
 	AvailableDicts = glob.glob("Generator/CultureGroups/*.names1")
 	for i in range(len(AvailableDicts)): 
@@ -2043,7 +2043,7 @@ def Main():
 	CreateFactionsConstraints()
 
 	#parse region.txt
-	print "Randomizing provinces... "
+	print("Randomizing provinces... ")
 	File = open("map/region.txt",'r')
 	for i in File:
 		if len(i)>5:
@@ -2060,53 +2060,53 @@ def Main():
 	#read provinces positions and adjacencies
 	ReadProvincesData()
 
-	print "Distributing cultures..."
+	print("Distributing cultures...")
 	DistributeCultures()
 
-	print "Randomizing regions..."
+	print("Randomizing regions...")
 	RandomizeRegions()
 	
-	print "Creating unifiable factions..."
+	print("Creating unifiable factions...")
 	CreateUnificationFactions()
 	
-	print "Distributing great powers provinces..."
+	print("Distributing great powers provinces...")
 	DistributeProvinces(1)
 	
-	print "Distributing others provinces..."
+	print("Distributing others provinces...")
 	DistributeProvinces(0)
 	
-	print "Creating small factions..."
+	print("Creating small factions...")
 	CreateSmallFactions()
 	
-	print "Creating unreleased factions..."
+	print("Creating unreleased factions...")
 	CreateUnreleasedFactions()
 	
 	if FillColonizedProvs:
-		print "Filling gaps..."
+		print("Filling gaps...")
 		FillGaps()
 	
 	if UnifiableRemoveCores:
-		print "Removing foreign cores on unifiable territories..."
+		print("Removing foreign cores on unifiable territories...")
 		RemoveForeignCoresOnUnifiable()
 
 	if AcceptedCulturePresenceMinSameGrp>0 or AcceptedCulturePresenceMinOtherGrp>0:
-		print "Assigning accepted cultures..."
+		print("Assigning accepted cultures...")
 		AssignAcceptedCultures()
 		
 	if AddCoresBasedOnCulture:
-		print "Adding cores for rightful owners..."
+		print("Adding cores for rightful owners...")
 		CheckCores()
 		
-	print "Updating factions..."
+	print("Updating factions...")
 	WriteCountryFiles()
 	
 	#Write common/cultures.txt file
-	print "Generating names..."
+	print("Generating names...")
 	CreateCommonCultures()
 	
 	
 	#modify history/provinces:
-	print "Updating history/provinces..."
+	print("Updating history/provinces...")
 	i=0
 	for p in AllProvinces:
 		sys.stdout.write("%0.2f%%\b\b\b\b\b\b\b" % (float(i)/len(AllProvinces)*100.0))
@@ -2114,7 +2114,7 @@ def Main():
 		ChangeProvinceOwnership(p)
 			
 	#create localisation file
-	print "Creating localisation files..."
+	print("Creating localisation files...")
 	File = open("mod/"+ModName+"/localisation/0random.csv",'a+')
 	for ThisFaction in Factions+UnreleasedFactions+UnificationFactions+SmallFactions:
 		Name = ThisFaction.Name
@@ -2172,7 +2172,7 @@ def Main():
 		File.write(ThisCulture.ReligionTag+";"+ThisCulture.Religion+";;;;;;;;;;;;;x\n")
 	
 	
-	print "Creating flags..."
+	print("Creating flags...")
 	File = open("mod/"+ModName+"/common/country_colors.txt","w")
 	for ThisFaction in Factions+UnreleasedFactions+UnificationFactions+SmallFactions:
 		File.write(ThisFaction.Tag+" = {\n")
@@ -2185,14 +2185,14 @@ def Main():
 	GenUtils.CreateFlag("REB", (30,30,30), (random.randint(0,255),random.randint(0,255),random.randint(0,255)), (30,30,30), ModName )
 	
 	#populate the world
-	print "Creating pops..."
+	print("Creating pops...")
 	CreatePops()
 	
 	WriteSummary()
 	
-	print "\nDone! See \""+os.getcwd()+"\\mod\\"+ModName+" Summary.txt\" for details on the generated world."
-	print "\nStart the launcher and check the mod \""+ModName+"\" to play."
-	raw_input("\nPress Enter to continue")
+	print("\nDone! See \""+os.getcwd()+"\\mod\\"+ModName+" Summary.txt\" for details on the generated world.")
+	print("\nStart the launcher and check the mod \""+ModName+"\" to play.")
+	input("\nPress Enter to continue")
 	
 Main()
 

@@ -1,6 +1,8 @@
 # Victoria2Generator
 Fork of the victoria 2 random world generator started by Jefferson Pinheiro to support python 3
 
+see http://jeffersonpinheiro.info/v2rwg.html for more information
+
 ## Installation
 
 1. Download this repository

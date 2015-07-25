@@ -1,0 +1,69 @@
+Version 1.21 (2011-07-11)
+- No longer interrupts if there are more provinces to distribute than there are available (this would cause a crash on the game)
+- Added a Settings.ini file to easily customize variables
+- Added unreleased factions (quantity and size customizable on Settings.ini)
+- Added an option (on Settings.ini) to not randomize regions or provinces names (default: off)
+- Secondary power suffixes are now customizable on SecPowerSuffixes.txt
+* by monsterfurby:
+ - Updated Latin and German dictionaries (looks like no one liked the oldskool ROMANVM names. hehe)
+ - Added Chinese
+* by Headshotcatcher:
+ - Added Dutch
+
+Version 1.22 (2011-07-11)
+- Fixed not generating pops when RandomizeRegionsNames or Provinces were set to False.
+* by monsterfurby:
+ - Added more communist and fascist drawings.
+ - Added composite Chinese and updated German.
+
+Version 1.3 (2011-07-22)
+* Modified folder structure. If upgrading, delete your old Generator folder.
+* Cultures:
+	- Culture groups (japanese, nordic, etc.) now spawn in the same area. 
+	- Cultures, not factions, now determine if a faction is Civilized or not.
+	- Culture groups now determine if a province begins colonized or not (in effect, there are large chunks of colonized/non-colonized territories)
+	- If a non-main culture presence is significant, it will be added as an Accepted Culture.
+* Unification:
+	- Added unification wars.
+	- "Small" factions are now only created on unifiable territories.
+* Cores:
+	- Now adds cores on territories when the owner's culture is not the same as the territory.
+* Graphics:
+	- Added different graphical cultures (ie. unit textures and models, and portraits).
+	- New uniforms textures by Jackson Pinheiro.
+* Province distribution:
+	- Rewritten factions distribution code (the map looks prettier now).
+	- Ultramarine or otherwise separated possessions are now considered colonial, if their culture group differs from the owner.
+* Random names:
+	- Dictionaries are now distinct for people names and province names. See Generator/AboutNames.txt for more info.
+	- Dictionaries may now have an optional .prefix and .suffix file, which randomly adds a suffix/prefix to the generated name.
+	- .names2 file is now optional, and may specify how many syllables will be picked (if unspecified, will assume 0~1).
+	- Revised all dictionaries, and added new ones.
+* Politics:
+	- Each culture group may now optionally have a political parties file (if absent, the UK one will be chosen).
+* Settings.ini:
+	- Added a lot of settings regarding the new features (cores giving, cultures creation and distribution, how many unifiable cultures and their size, the conditions to become an accepted culture, etc.)
+* Other tweaks and optimizations.
+
+Version 1.31 (2011-08-01)
+- Revised some culture groups.
+- Added culture groups: Tupi, Quechua, Zulu, Yoruba.
+- Revised and added new graphical cultures.
+- Revised flags generation.
+- Other fixes.
+
+Version 1.32 (2011-08-14)
+- Fixed incompatibility with the pop demand mod (PDM) (and possibly other mods).
+
+Version 1.33 (2011-08-31)
+- Now writes a world summary on Generator/Summaries/.
+- Now randomizes which provinces form a region.
+- Regular provinces borders (e.g. USA and Australia) have been made more irregular.
+
+Version 1.34 (2011-09-27)
+- Added faction types: Japan (high lit, high pop, unciv) and Sweden (high lit, low pop).
+- Added option "UseShortNames", to generate smaller province/region names (without prefixes or suffixes, and 3 syllables max).
+- Tweaked starting factories.
+- Life rating is now the same for the entire region.
+- SecPowerSuffixes.txt now defines a % chance that a suffix will be used on a secondary faction's faction name.
+- Now generates a rebel flag.

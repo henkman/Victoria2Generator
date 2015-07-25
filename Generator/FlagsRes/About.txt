@@ -1,0 +1,2 @@
+These flags icons are pasted upon the original flag, for each government type.
+Feel free to add more, they must only have the same size, be PNG, and their filename must begin with its corresponding government, e.g. comm20394.png, mon70934cool.png, fasc8.png etc.

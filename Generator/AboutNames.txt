@@ -1,0 +1,101 @@
+There are two dictionaries folders: CultureGroups and CultureGroups/Names.
+
+CultureGroups files are used to generate provinces, regions, factions, and ships names.
+
+CultureGroups/Names filesare used to generate generals and admirals names.
+
+To create a new culture group (ie. dictionary), all you need to do is to create new .names1 and .names3 files on the CultureGroups folder. It'll help however if I explain how the names generator works.
+
+First, a warning: the script may crash if there are too few combinations. This is because it'll attempt (and fail) to generate a unique faction name. Also, make sure there are no empty new lines on the files.
+
+So, there are five file extensions.
+
+- .names1 is the first syllable. This file is mandatory.
+- .names2 is/are the midle syllables. This file is optional.
+- .names3 is the last syllable. This file is mandatory.
+- .prefix is appended to the front of the generated name. This file is optional.
+- .suffix is appended to the end of the generated name. This file is optional.
+- .pol is appended to each faction's common/countries file (ie. political parties). This file is optional (default = UK parties)
+- .gc is a list of possible graphical cultures. This file is optional (default = Generic).
+
+Additioanlly, .names2 files may optionally specify how many syllables will be picked from it. If ommited, the generator will assume 0 to 1. So, if you want that syllables be picked from 1 to 3 times, a .names2 file should look like this:
+1
+3
+syl1
+syl2
+syl3
+syl4
+
+If you write this, the generator will pick the default of 0 to 1 syllables:
+syl1
+syl2
+syl3
+syl4
+
+Prefix files are like this:
+20
+New
+Old
+St-
+
+The first number is mandatory, and specifies the chance that a prefix will be added. Note that you should NOT add a space on each lines end (such as "New "), as the generator automatically adds a white space.
+
+If you want to prevent a space character, add the character ^ (see Zulu.prefix for reference). Spaces are never added on dashes (-) and commas (,) as well.
+
+Suffix files are like this:
+20
+, the Smart
+, the Old
+, duke of $city$
+von $city$
+, friend of $name$
+
+The first number is mandatory, and specifies the chance that a suffix will be added. Again you should not add spaces, the script will automatically put them. 
+
+There are also the keywords "$city$", which will generate a random Place name, and $name$, which generate a random name. Both will never generate names with suffix or prefix.
+
+
+
+
+Now, let me explain how names are generated.
+
+* For faction names *
+- Pick one syllable from .names1
+- Pick 0 to 1 syllables from .names2, if .names2 exists (or the amount specified on the file)
+- Pick one syllable from .names3
+
+That's it, pretty simple. Suffixes and prefixes are never added to faction names.
+
+* For place names *
+- Check if a Generator/CultureGroups/<Dictionary>.prefix file exists. If it does, consider addind a prefix (depending on the specified Chance).
+- Do the same as Faction names.
+- Check if a Generator/CultureGroups/<Dictionary>.suffix file exists. If it does, consider addind a suffix (depending on the specified Chance).
+
+* For people names * 
+- Check if Generator/CultureGroups/Names/<Dictionary>.names1 exists. If it doesn't, pick .names1 from CultureGroups/.
+- Do the same for .names2 and .names3.
+- Check if a Generator/CultureGroups/Names/<Dictionary>.prefix file exists. If it does, consider addind a prefix (depending on the specified Chance). If it doesn't, don't use CultureGroups/<Dictionary>.prefix, even if it exists.
+- Do the same as Faction names.
+- Check if a Generator/CultureGroups/Names/<Dictionary>.suffix file exists. If it does, consider addind a suffix (depending on the specified Chance). If it doesn't, don't use CultureGroups/<Dictionary>.suffix, even if it exists.
+
+As you can see, you don't have to specify .names1-3 files for people names. I didn't for Nahuatl, for instance. In that case, the generator will pick syllables from the CultureGroups/ folder.
+
+
+So, why is it important to know how the name gen works? Because it will help you in creating syntatically correct dictionaries. 
+
+For instance, notice that every syllable on Portuguese.names2 ends with a consonant, and every syllable on Portuguese.names3 begins with a vowel. With this setup, all Portuguese names will look credible and syntatically correct for Portuguese, even if it's all invented words.
+
+Finally, you may specify two other files: .pol and .gc.
+
+.pol files are just a copy-paste from the political parties descriptor found on common/countries/*.txt. Open CultureGroups/Gaellic.pol to see an example.
+
+.gc files contain a list of available graphical cultures for that culture group. You may specify either one or more options (separated by new lines). The options are the following:
+
+Europe1GC - Looks like British
+Europe2GC - Prussian
+Generic - Generic
+UsGC - Cowboy
+SouthAmericanGC - South American
+American1GC - Native American
+Asian1GC - Asian
+African1GC - African

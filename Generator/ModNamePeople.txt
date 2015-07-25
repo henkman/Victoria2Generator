@@ -1,0 +1,13 @@
+Butcher
+Baker
+Worker
+King
+Warlord
+Queen
+Prince
+President
+Peasant
+General
+Admiral
+Martyr
+God

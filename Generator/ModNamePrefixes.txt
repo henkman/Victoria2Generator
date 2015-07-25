@@ -1,0 +1,36 @@
+The Revolt of $city$
+The Fall of $city$
+The Rise of $city$
+The Reign of $name$
+The Legacy of $name$
+The Three $things$
+The Fifty $things$
+The Battle of $city$
+The Sack of $city$
+The Armies of $adj$
+The Legend of $name$
+A Game of $things$
+The $thing$ and the $thing2$
+The $thing$ of $adj$
+The $thing$ of $adj$
+For $thing$ and $thing2$!
+The War of the $things$
+Confessions of $name$
+The Last of the $people$s
+The $things$
+Songs of $adj$
+The Age of $adj$
+A Tale of $things$
+The Adventures of $name$
+Thus Spoke $name$
+The Birth of $name$
+The Towers of $city$
+The Road to $adj$
+Of $things$ and $things2$
+March of the $things$
+Hearts of $adj$
+Masters of $adj$
+Heroes of $adj$ and $adj2$
+$city$ Universalis
+Crusader $people$s
+A Dance with $things$

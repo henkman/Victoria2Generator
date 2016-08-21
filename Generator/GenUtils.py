@@ -194,6 +194,8 @@ def CreateFlag(name, Color1, Color2, Color3, ModName):
 	elif choice is "LeftRectangle":
 		draw.rectangle((0, 0, 30, 64), fill=(random.choice(Colors)))
 
+	if not os.path.exists("mod/"+ModName+"/gfx/flags/"):
+		os.makedirs("mod/"+ModName+"/gfx/flags/")
 	im.save("mod/"+ModName+"/gfx/flags/"+name+".tga", "TGA")
 	im.save("mod/"+ModName+"/gfx/flags/"+name+"_nodraw.tga", "TGA")
 	im2 = Image.open("mod/"+ModName+"/gfx/flags/"+name+".tga")
@@ -252,7 +254,9 @@ def CreateLoadingScreens(ModFolder):
 				X = random.randint(127+i*150,150+i*150)
 				Y = random.randint(320,400)
 				im.paste(stamp,(X,Y), stamp)
-			
+		
+		if not os.path.exists("mod/"+ModName+"/gfx/loadingscreens/"):
+			os.makedirs("mod/"+ModName+"/gfx/loadingscreens/")
 		im.save("mod/"+ModFolder+"/gfx/loadingscreens/load_"+str(Current)+".bmp", "BMP")
 		
 		os.system("Generator\\nvdxt.exe -file \"mod\\"+ModFolder+"\\gfx\\loadingscreens\\load_"+str(Current)+".bmp\" -dxt3 -nomipmap -output  \"mod\\"+ModFolder+"\\gfx\\loadingscreens\\load_"+str(Current)+".dds\" > nul")

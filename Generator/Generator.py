@@ -790,6 +790,8 @@ def CreateHistoryCountries(ThisFaction):
 	bCivilized=ThisFaction.Civilized
 	bSuperpower = ThisFaction.Type == "Superpower"
 	bSecPower = ThisFaction.Type == "SecPower" or ThisFaction.Type == "Russia" or ThisFaction.Type == "Sweden"
+	if not os.path.exists("mod/"+ModName+"/history/countries/"):
+		os.makedirs("mod/"+ModName+"/history/countries/")
 	File = open("mod/"+ModName+"/history/countries/"+ThisFaction.Tag+" - "+GenUtils.remove_accents(ThisFaction.Name)+".txt", "w")
 	File.write("capital = "+str(ThisFaction.ProvincesOwned[0].ProvinceNumber))
 	File.write("\nprimary_culture = "+ThisFaction.Culture.CultureNameTag)
@@ -1090,7 +1092,8 @@ def Startup():
 	ModFile.write("\nuserdir = \""+ModFolder+"\"")
 	ModFile.write("\nreplace_path = \"history/pops/1836.1.1\"")
 	os.chdir("../")
-	
+	if not os.path.exists("mod/"+ModFolder+"/localisation"):
+		os.mkdir("mod/"+ModFolder+"/localisation/")
 	File = open("mod/"+ModFolder+"/localisation/0random.csv",'w')
 	File.write("GC_NAME;"+ModName[4:]+";;;;;;;;;;;;;x;;;;")
 	
@@ -1323,6 +1326,8 @@ def CreateFactory(ThisProvince):
 
 #######################################################
 def CreatePops():
+	if not os.path.exists("mod/"+ModName+"/history/pops/1836.1.1"):
+		os.makedirs("mod/"+ModName+"/history/pops/1836.1.1")
 	File = open("mod/"+ModName+"/history/pops/1836.1.1/pops.txt","w")
 	for ThisProvince in AllProvinces:
 		ThisRegion = GetProvinceRegion(ThisProvince.ProvinceNumber)
@@ -1585,7 +1590,8 @@ def RandomizeRegions():
 					if len(r.Provinces) == 0:
 						Regions.remove(r)
 						ChangedAny=1
-	
+	if not os.path.exists("mod/"+ModName+"/map"):
+		os.mkdir("mod/"+ModName+"/map/")
 	f = open("mod/"+ModName+"/map/region.txt",'w')
 	for r in Regions:
 		f.write("RND_"+str(r.Provinces[0].ProvinceNumber)+" = {")
